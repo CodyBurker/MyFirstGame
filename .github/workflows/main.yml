@@ -51,3 +51,8 @@ jobs:
 #           projectDir: # optional, default is .
           # Whether or not to use `--export-debug`
 #           debugMode: # optional
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Client - ${{ matrix.platform }}
+          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
