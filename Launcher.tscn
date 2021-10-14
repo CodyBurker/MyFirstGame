@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://line_follow_2.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://drag_and_drop.gd" type="Script" id=4]
+[ext_resource path="res://Planet With Moon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Camera2D.gd" type="Script" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31.6694, 31.5448 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 510, 300 )
+current = true
+script = ExtResource( 6 )
+
+[node name="DrawLine" type="Line2D" parent="."]
+position = Vector2( 499.429, 500.474 )
+points = PoolVector2Array( 0, 0, 0, 0 )
+script = ExtResource( 2 )
+
+[node name="Launcher" type="KinematicBody2D" parent="."]
+position = Vector2( 500, 400 )
+input_pickable = true
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 4 )
+delete_launcher = true
+launch_speed = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Launcher"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Launcher"]
+texture = ExtResource( 3 )
+
+[node name="Planet With Moon" parent="." instance=ExtResource( 5 )]
+
+[node name="Planet With Moon2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 664.737, -315.331 )
+rotation = 2.17335
+
+[node name="Planet With Moon3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 77.3162, -529.407 )
+rotation = 0.548363
+
+[node name="Planet With Moon4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 656.226, -1557.66 )
+rotation = -0.459998
+
+[node name="Planet With Moon5" parent="." instance=ExtResource( 5 )]
+position = Vector2( -24.0017, -88.5125 )
+rotation = 1.71335
+
+[node name="Planet With Moon6" parent="." instance=ExtResource( 5 )]
+position = Vector2( -232.906, -904.333 )
+rotation = 0.0883647
+
+[node name="Planet With Moon7" parent="." instance=ExtResource( 5 )]
+position = Vector2( 526.626, -804.96 )
+rotation = -0.523598
+
+[node name="Planet With Moon8" parent="." instance=ExtResource( 5 )]
+position = Vector2( 962.537, -1236.16 )
+rotation = 1.71335
+
+[node name="Planet With Moon9" parent="." instance=ExtResource( 5 )]
+position = Vector2( 171.186, -1410.91 )
+rotation = 0.0883647
+
+[node name="Planet With Moon10" parent="." instance=ExtResource( 5 )]
+position = Vector2( -488.677, -1243.78 )
+rotation = -0.459998
+
+[node name="Planet With Moon11" parent="." instance=ExtResource( 5 )]
+position = Vector2( -151.494, -1847.34 )
+rotation = 1.71335
+
+[node name="Planet With Moon12" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1145.79, -686.61 )
+rotation = -1.24314
+
+[connection signal="input_event" from="Launcher" to="Launcher" method="_on_KinematicBody2D_input_event"]
